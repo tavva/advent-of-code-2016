@@ -1,7 +1,9 @@
 package main
 
 import (
+	"fmt"
 	"io/ioutil"
+	"math"
 	"strconv"
 	"strings"
 )
@@ -38,4 +40,6 @@ func main() {
 			x -= float64(distance)
 		}
 	}
+
+	fmt.Printf("%v", math.Abs(x)+math.Abs(y))
 }
