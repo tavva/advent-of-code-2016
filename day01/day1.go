@@ -19,7 +19,7 @@ func main() {
 
 	for _, v := range commands {
 		var direction = string(v[0])
-		var distance, _ = strconv.Atoi(string(v[1]))
+		var distance, _ = strconv.Atoi(string(v[1:len(v)]))
 
 		if direction == "R" {
 			current_direction++
