@@ -20,8 +20,11 @@ func main() {
 
 	var x, y float64 // defaults to 0
 	var current_direction int
+	var current_location location
 
+	var first_intercept location
 	visited := make(map[location]bool)
+	var matched = false
 
 	for _, v := range commands {
 		var direction = string(v[0])
@@ -47,9 +50,17 @@ func main() {
 				x--
 			}
 
+			current_location = location{x, y}
+
+			if !matched && visited[current_location] {
+				first_intercept = current_location
+				matched = true
+			}
+
 			visited[location{x, y}] = true
 		}
 	}
 
-	fmt.Printf("%v", math.Abs(x)+math.Abs(y))
+	fmt.Printf("%v\n", math.Abs(x)+math.Abs(y))
+	fmt.Printf("%v", math.Abs(first_intercept.x)+math.Abs(first_intercept.y))
 }
