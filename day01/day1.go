@@ -1,8 +1,8 @@
 package main
 
 import (
-	"fmt"
 	"io/ioutil"
+	"strconv"
 	"strings"
 )
 
@@ -12,5 +12,8 @@ func main() {
 
 	var commands = strings.Split(command_string, ", ")
 
-	fmt.Printf("%v", commands)
+	for _, v := range commands {
+		var direction = string(v[0])
+		var distance, _ = strconv.Atoi(string(v[1]))
+	}
 }
