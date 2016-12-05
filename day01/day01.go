@@ -8,6 +8,10 @@ import (
 	"strings"
 )
 
+type location struct {
+	x, y float64
+}
+
 func main() {
 	var input, _ = ioutil.ReadFile("./day01.txt")
 	var command_string = strings.TrimSpace(string(input))
@@ -16,6 +20,8 @@ func main() {
 
 	var x, y float64 // defaults to 0
 	var current_direction int
+
+	visited := make(map[location]bool)
 
 	for _, v := range commands {
 		var direction = string(v[0])
@@ -29,15 +35,19 @@ func main() {
 
 		current_direction %= 4
 
-		switch current_direction {
-		case 0:
-			y += float64(distance)
-		case 1:
-			x += float64(distance)
-		case 2:
-			y -= float64(distance)
-		case 3:
-			x -= float64(distance)
+		for i := 0; i < distance; i++ {
+			switch current_direction {
+			case 0:
+				y++
+			case 1:
+				x++
+			case 2:
+				y--
+			case 3:
+				x--
+			}
+
+			visited[location{x, y}] = true
 		}
 	}
 
