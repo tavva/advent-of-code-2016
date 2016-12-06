@@ -11,6 +11,8 @@ func main() {
 	var lines = strings.Split(string(input), "\n")
 
 	for _, line := range lines {
-		fmt.Printf("%v", line)
+		for _, direction := range line {
+			fmt.Printf("%v", string(direction))
+		}
 	}
 }
