@@ -18,7 +18,8 @@ func main() {
 	var x, y = 1, 1 // coordinates on keypad
 
 	var input, _ = ioutil.ReadFile("./day02.txt")
-	var lines = strings.Split(string(input), "\n")
+	var command_string = strings.TrimSpace(string(input))
+	var lines = strings.Split(command_string, "\n")
 
 	for _, line := range lines {
 		for _, direction := range line {
