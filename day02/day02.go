@@ -20,7 +20,7 @@ func main() {
 	var x, y = 0, 2 // coordinates on keypad
 	var temp_x, temp_y int
 
-	var input, _ = ioutil.ReadFile("./day02-short.txt")
+	var input, _ = ioutil.ReadFile("./day02.txt")
 	var command_string = strings.TrimSpace(string(input))
 	var lines = strings.Split(command_string, "\n")
 
