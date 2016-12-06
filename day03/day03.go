@@ -1,7 +1,9 @@
 package main
 
 import (
+	"fmt"
 	"io/ioutil"
+	"sort"
 	"strconv"
 	"strings"
 )
@@ -13,10 +15,14 @@ func main() {
 
 	for _, line := range lines {
 		var side_inputs = strings.Fields(line)
-		var sides [3]int
+		var sides []int
 
-		for x, v := range side_inputs {
-			sides[x], _ = strconv.Atoi(v)
+		for _, v := range side_inputs {
+			var value, _ = strconv.Atoi(v)
+			sides = append(sides, value)
 		}
+
+		sort.Ints(sides)
+		fmt.Println(sides)
 	}
 }
