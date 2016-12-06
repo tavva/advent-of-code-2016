@@ -34,7 +34,7 @@ func main() {
 			}
 		}
 
-		pin = pin + keypad[x][y]
+		pin = pin + keypad[y][x]
 	}
 
 	println(pin)
