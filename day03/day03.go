@@ -2,6 +2,7 @@ package main
 
 import (
 	"io/ioutil"
+	"strconv"
 	"strings"
 )
 
@@ -11,6 +12,11 @@ func main() {
 	var lines = strings.Split(command_strings, "\n")
 
 	for _, line := range lines {
-		println(line)
+		var side_inputs = strings.Fields(line)
+		var sides [3]int
+
+		for x, v := range side_inputs {
+			sides[x], _ = strconv.Atoi(v)
+		}
 	}
 }
