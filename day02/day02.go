@@ -24,11 +24,11 @@ func main() {
 		for _, direction := range line {
 			switch direction {
 			case 'U':
-				y = int(math.Min(0, float64(y)-1))
+				y = int(math.Max(0, float64(y)-1))
 			case 'D':
 				y = int(math.Min(2, float64(y)+1))
 			case 'L':
-				x = int(math.Min(0, float64(x)-1))
+				x = int(math.Max(0, float64(x)-1))
 			case 'R':
 				x = int(math.Min(2, float64(x)+1))
 			}
