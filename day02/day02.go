@@ -7,10 +7,12 @@ import (
 )
 
 func main() {
-	keypad := [3][3]int{
-		{1, 2, 3},
-		{4, 5, 6},
-		{7, 8, 9},
+	var pin string
+
+	keypad := [3][3]string{
+		{"1", "2", "3"},
+		{"4", "5", "6"},
+		{"7", "8", "9"},
 	}
 
 	var x, y = 1, 1 // coordinates on keypad
@@ -31,5 +33,9 @@ func main() {
 				x = int(math.Min(2, float64(x)+1))
 			}
 		}
+
+		pin = pin + keypad[x][y]
 	}
+
+	println(pin)
 }
