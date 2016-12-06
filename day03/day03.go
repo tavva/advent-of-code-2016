@@ -23,6 +23,9 @@ func main() {
 		}
 
 		sort.Ints(sides)
-		fmt.Println(sides)
+
+		if sides[0]+sides[1] > sides[2] {
+			fmt.Println(sides)
+		}
 	}
 }
