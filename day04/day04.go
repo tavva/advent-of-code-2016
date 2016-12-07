@@ -5,6 +5,7 @@ import (
 	"io/ioutil"
 	"regexp"
 	"sort"
+	"strconv"
 	"strings"
 )
 
@@ -35,10 +36,12 @@ func main() {
 
 	re := regexp.MustCompile("^([a-z-]+)([0-9]+)\\[([a-z]+)\\]$")
 
+	sector_sum := 0
+
 	for _, line := range lines {
 		matches := re.FindStringSubmatch(line)
 		name := strings.Replace(matches[1], "-", "", -1)
-		sector_id := matches[2]
+		sector_id, _ := strconv.Atoi(matches[2])
 		checksum := matches[3]
 
 		letter_counts := make(map[rune][]int)
@@ -53,12 +56,16 @@ func main() {
 		}
 		sort.Sort(sort.Reverse(list))
 
-		for _, p := range list {
-			fmt.Printf("%v\n", p)
+		sum := ""
+
+		for _, p := range list[:5] {
+			sum += p.Key
 		}
 
-		println(name)
-		println(sector_id)
-		println(checksum)
+		if sum == checksum {
+			sector_sum += sector_id
+		}
 	}
+
+	println(sector_sum)
 }
