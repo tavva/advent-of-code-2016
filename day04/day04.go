@@ -41,7 +41,6 @@ func main() {
 	for _, line := range lines {
 		matches := re.FindStringSubmatch(line)
 		name := matches[1]
-		println(name)
 		sector_id, _ := strconv.Atoi(matches[2])
 
 		decrypted_name := []rune(name)
@@ -91,7 +90,11 @@ func main() {
 			sector_sum += sector_id
 		}
 
-		println(string(decrypted_name))
+		if strings.Contains(string(decrypted_name), "north") {
+			println(string(name))
+			println(string(decrypted_name))
+			println(sector_id)
+		}
 	}
 
 	println(sector_sum)
