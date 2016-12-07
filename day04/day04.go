@@ -13,6 +13,10 @@ type Pair struct {
 	Value int
 }
 
+func (p Pair) String() string {
+	return fmt.Sprintf("%s: %d", p.Key, p.Value)
+}
+
 type PairList []Pair
 
 func (p PairList) Len() int      { return len(p) }
@@ -50,7 +54,7 @@ func main() {
 		sort.Sort(sort.Reverse(list))
 
 		for _, p := range list {
-			fmt.Printf("%v: %v\n", p.Key, p.Value)
+			fmt.Printf("%v\n", p)
 		}
 
 		println(name)
