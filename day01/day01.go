@@ -30,10 +30,13 @@ func main() {
 		var direction = string(v[0])
 		var distance, _ = strconv.Atoi(string(v[1:len(v)]))
 
-		if direction == "R" {
+		switch direction {
+		case "R":
 			current_direction++
-		} else if direction == "L" {
+		case "L":
 			current_direction += -1 + 4
+		default:
+			continue // invalid direction
 		}
 
 		current_direction %= 4
