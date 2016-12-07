@@ -16,6 +16,7 @@ func main() {
 	for _, line := range lines {
 		matches := re.FindStringSubmatch(line)
 		name := matches[1]
+		name = strings.Replace(name, "-", "", -1)
 		sector_id := matches[2]
 		checksum := matches[3]
 		println(name)
