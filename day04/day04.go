@@ -18,6 +18,12 @@ func main() {
 		name := strings.Replace(matches[1], "-", "", -1)
 		sector_id := matches[2]
 		checksum := matches[3]
+
+		letter_counts := make(map[rune][]int)
+		for _, x := range name {
+			letter_counts[x] = append(letter_counts[x], 1)
+		}
+
 		println(name)
 		println(sector_id)
 		println(checksum)
