@@ -42,7 +42,7 @@ func main() {
 			letter_counts[x] = append(letter_counts[x], 1)
 		}
 
-		list := make(PairList, len(letter_counts))
+		list := PairList{}
 
 		for k, v := range letter_counts {
 			list = append(list, Pair{string(k), len(v)})
