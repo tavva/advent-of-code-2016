@@ -40,11 +40,36 @@ func main() {
 
 	for _, line := range lines {
 		matches := re.FindStringSubmatch(line)
-		name := strings.Replace(matches[1], "-", "", -1)
+		name := matches[1]
+		println(name)
 		sector_id, _ := strconv.Atoi(matches[2])
+
+		decrypted_name := []rune(name)
+
+		for i := 0; i < sector_id; i++ {
+			for j, x := range decrypted_name {
+				var decrypted_letter rune
+
+				if x == 'z' {
+					decrypted_letter = 'a'
+				} else if x == ' ' {
+					decrypted_letter = ' '
+				} else if x == '-' {
+					decrypted_letter = ' '
+				} else {
+					decrypted_letter = rune(int(x) + 1)
+				}
+
+				decrypted_name[j] = decrypted_letter
+			}
+		}
+
+		name = strings.Replace(name, "-", "", -1)
+
 		checksum := matches[3]
 
 		letter_counts := make(map[rune][]int)
+
 		for _, x := range name {
 			letter_counts[x] = append(letter_counts[x], 1)
 		}
@@ -65,6 +90,8 @@ func main() {
 		if sum == checksum {
 			sector_sum += sector_id
 		}
+
+		println(string(decrypted_name))
 	}
 
 	println(sector_sum)
