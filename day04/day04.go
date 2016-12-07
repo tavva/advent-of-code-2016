@@ -49,13 +49,14 @@ func main() {
 			for j, x := range decrypted_name {
 				var decrypted_letter rune
 
-				if x == 'z' {
+				switch x {
+				case 'z':
 					decrypted_letter = 'a'
-				} else if x == ' ' {
+				case ' ':
 					decrypted_letter = ' '
-				} else if x == '-' {
+				case '-':
 					decrypted_letter = ' '
-				} else {
+				default:
 					decrypted_letter = rune(int(x) + 1)
 				}
 
