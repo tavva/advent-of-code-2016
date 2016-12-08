@@ -13,5 +13,11 @@ func main() {
 	lines := strings.Split(raw_lines, "\n")
 
 	for _, line := range lines {
+		tokens := strings.Fields(line)
+
+		switch tokens[0] {
+		case "rect":
+		case "rotate":
+		}
 	}
 }
