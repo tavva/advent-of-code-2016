@@ -18,9 +18,32 @@ func rect(screen [50][6]int, x int, y int) [50][6]int {
 }
 
 func rotate_column(screen [50][6]int, coord int, amount int) [50][6]int {
+	for i := 0; i < amount; i++ {
+		var temp_col [6]int
+
+		for j := 0; j < 6; j++ {
+			temp_col[(j+1)%6] = screen[coord][j]
+		}
+		for j := 0; j < 6; j++ {
+			screen[coord][j] = temp_col[j]
+		}
+	}
+
 	return screen
 }
+
 func rotate_row(screen [50][6]int, coord int, amount int) [50][6]int {
+	for i := 0; i < amount; i++ {
+		var temp_row [50]int
+
+		for j := 0; j < 50; j++ {
+			temp_row[(j+1)%50] = screen[j][coord]
+		}
+		for j := 0; j < 50; j++ {
+			screen[j][coord] = temp_row[j]
+		}
+	}
+
 	return screen
 }
 
