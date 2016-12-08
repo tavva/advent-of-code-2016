@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"io/ioutil"
 	"strings"
 )
@@ -20,4 +21,6 @@ func main() {
 		case "rotate":
 		}
 	}
+
+	fmt.Println(screen)
 }
