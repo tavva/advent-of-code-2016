@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"io/ioutil"
+	"strconv"
 	"strings"
 )
 
@@ -18,6 +19,14 @@ func main() {
 
 		switch tokens[0] {
 		case "rect":
+			bits := strings.Split(tokens[1], "x")
+			x, _ := strconv.Atoi(bits[0])
+			y, _ := strconv.Atoi(bits[1])
+			for i := 0; i < x; i++ {
+				for j := 0; j < y; j++ {
+					screen[i][j] = 1
+				}
+			}
 		case "rotate":
 		}
 	}
