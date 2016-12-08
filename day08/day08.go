@@ -17,6 +17,13 @@ func rect(screen [50][6]int, x int, y int) [50][6]int {
 	return screen
 }
 
+func rotate_column(screen [50][6]int, which string, amount int) [50][6]int {
+	return screen
+}
+func rotate_row(screen [50][6]int, which string, amount int) [50][6]int {
+	return screen
+}
+
 func main() {
 	var screen [50][6]int
 
@@ -34,6 +41,13 @@ func main() {
 			y, _ := strconv.Atoi(bits[1])
 			screen = rect(screen, x, y)
 		case "rotate":
+			amount, _ := strconv.Atoi(tokens[4])
+			switch tokens[1] {
+			case "column":
+				screen = rotate_column(screen, tokens[2], amount)
+			case "row":
+				screen = rotate_row(screen, tokens[2], amount)
+			}
 		}
 	}
 
