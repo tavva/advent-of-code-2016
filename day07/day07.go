@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"io/ioutil"
 	"regexp"
 	"strings"
@@ -41,7 +42,7 @@ Line:
 
 		for _, match := range good_bits {
 			if repeatCheck(match[1]) {
-				println(line)
+				fmt.Println(line)
 				continue Line
 			}
 		}
