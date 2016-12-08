@@ -7,6 +7,16 @@ import (
 	"strings"
 )
 
+func rect(screen [50][6]int, x int, y int) [50][6]int {
+	for i := 0; i < x; i++ {
+		for j := 0; j < y; j++ {
+			screen[i][j] = 1
+		}
+	}
+
+	return screen
+}
+
 func main() {
 	var screen [50][6]int
 
@@ -22,11 +32,7 @@ func main() {
 			bits := strings.Split(tokens[1], "x")
 			x, _ := strconv.Atoi(bits[0])
 			y, _ := strconv.Atoi(bits[1])
-			for i := 0; i < x; i++ {
-				for j := 0; j < y; j++ {
-					screen[i][j] = 1
-				}
-			}
+			screen = rect(screen, x, y)
 		case "rotate":
 		}
 	}
