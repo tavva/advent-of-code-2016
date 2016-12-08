@@ -56,6 +56,20 @@ func print_screen(screen [50][6]int) {
 	}
 }
 
+func count_lit(screen [50][6]int) int {
+	num_lit := 0
+
+	for i := 0; i < len(screen[0]); i++ {
+		for j := 0; j < len(screen); j++ {
+			if screen[j][i] == 1 {
+				num_lit++
+			}
+		}
+	}
+
+	return num_lit
+}
+
 func main() {
 	var screen [50][6]int
 
@@ -87,4 +101,5 @@ func main() {
 	}
 
 	print_screen(screen)
+	println(count_lit(screen))
 }
