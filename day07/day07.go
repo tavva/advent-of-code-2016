@@ -30,6 +30,20 @@ func main() {
 
 Line:
 	for _, line := range lines {
-		println(line)
+		good_bits := good_re.FindAllStringSubmatch(line, -1)
+		bad_bits := bad_re.FindAllStringSubmatch(line, -1)
+
+		for _, match := range bad_bits {
+			if repeatCheck(match[1]) {
+				continue Line
+			}
+		}
+
+		for _, match := range good_bits {
+			if repeatCheck(match[1]) {
+				println(line)
+				continue Line
+			}
+		}
 	}
 }
