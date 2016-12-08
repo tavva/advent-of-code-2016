@@ -24,6 +24,15 @@ func rotate_row(screen [50][6]int, coord int, amount int) [50][6]int {
 	return screen
 }
 
+func print_screen(screen [50][6]int) {
+	for i := 0; i < len(screen[0]); i++ {
+		for j := 0; j < len(screen); j++ {
+			fmt.Printf("%v", screen[j][i])
+		}
+		fmt.Printf("\n")
+	}
+}
+
 func main() {
 	var screen [50][6]int
 
@@ -54,5 +63,5 @@ func main() {
 		}
 	}
 
-	fmt.Println(screen)
+	print_screen(screen)
 }
