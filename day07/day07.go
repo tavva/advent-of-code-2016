@@ -2,6 +2,7 @@ package main
 
 import (
 	"io/ioutil"
+	"regexp"
 	"strings"
 )
 
@@ -24,6 +25,10 @@ func main() {
 	raw_lines := strings.TrimSpace(string(input))
 	lines := strings.Split(raw_lines, "\n")
 
+	good_re := regexp.MustCompile("(?:^|])([a-z]+)(?:$|\\[)")
+	bad_re := regexp.MustCompile("\\[([a-z]+)\\]")
+
+Line:
 	for _, line := range lines {
 		println(line)
 	}
