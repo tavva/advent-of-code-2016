@@ -1,11 +1,14 @@
 package main
 
 import (
+	"bytes"
 	"fmt"
 	"io/ioutil"
 	"strconv"
 	"strings"
 )
+
+var buffer bytes.Buffer
 
 func process_marker(s string) {
 	end_index := strings.Index(s, ")")
@@ -16,7 +19,7 @@ func process_marker(s string) {
 	seq_rep, _ := strconv.Atoi(bits[1])
 
 	for i := 0; i < seq_rep; i++ {
-		fmt.Printf(s[end_index+1 : end_index+1+seq_len])
+		buffer.WriteString(s[end_index+1 : end_index+1+seq_len])
 	}
 
 	process_data(s[end_index+1+seq_len:])
@@ -34,14 +37,18 @@ For:
 			process_marker(s[i+1:])
 			break For
 		default:
-			fmt.Printf("%v", string(r))
+			buffer.WriteString(string(r))
 		}
 	}
 }
 
 func main() {
-	input, _ := ioutil.ReadFile("./day09-short.txt")
+	input, _ := ioutil.ReadFile("./day09.txt")
 	data := strings.TrimSpace(string(input))
 
 	process_data(data)
+
+	fmt.Println(buffer.String())
+
+	fmt.Println(len(buffer.String()))
 }
