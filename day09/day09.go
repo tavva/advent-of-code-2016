@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"io/ioutil"
 	"strings"
 )
@@ -8,9 +9,13 @@ import (
 func main() {
 	input, _ := ioutil.ReadFile("./day09.txt")
 	data := strings.TrimSpace(string(input))
-	println(input)
 
-	for _, c := range data {
-		println(c)
+	for i := 0; i < len(data); i++ {
+		r := rune(data[i])
+
+		switch r {
+		default:
+			fmt.Printf("%v", string(r))
+		}
 	}
 }
